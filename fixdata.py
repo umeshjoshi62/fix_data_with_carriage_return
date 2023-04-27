@@ -1,6 +1,22 @@
+import sys
 import csv
 
+maxInt = sys.maxsize
+
+while True:
+    # decrease the maxInt value by factor 10 
+    # as long as the OverflowError occurs.
+
+    try:
+        csv.field_size_limit(maxInt)
+        break
+    except OverflowError:
+        maxInt = int(maxInt/10)
+
+
 count_error=0
+
+
 # open the input file
 with open('input_file.txt', 'r') as f_in:
     # create a CSV reader with tab delimiter
